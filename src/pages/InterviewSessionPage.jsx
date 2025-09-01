@@ -153,12 +153,12 @@ const InterviewSessionPage = () => {
     setConnectionState('connecting');
     console.log('Connecting to socket server...');
 
-    socketRef.current = io("http://localhost:7576", {
-      path: "/websocket/conversation" ,
-      transports: ['websocket'],
+    socketRef.current = io(BOT_BACKEND_URL, {
+      path: "/websocket/conversation",
+      transports: ["websocket"],
       reconnectionAttempts: 5,
       reconnectionDelay: 1000,
-      withCredentials: true
+      withCredentials: true,
     });
 
     // Socket event listeners
