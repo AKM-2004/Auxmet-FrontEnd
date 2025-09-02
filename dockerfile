@@ -4,6 +4,15 @@ FROM node:20-alpine AS build
 # Set working directory
 WORKDIR /app
 
+ARG VITE_BACKEND_URL
+ARG VITE_BOTBACKENDURL
+
+# Set environment variables from build args
+ENV VITE_BACKEND_URL=$VITE_BACKEND_URL
+ENV VITE_BOTBACKENDURL=$VITE_BOTBACKENDURL
+
+
+
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
