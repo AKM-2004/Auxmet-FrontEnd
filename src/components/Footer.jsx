@@ -1,28 +1,28 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Github, Twitter, Linkedin } from 'lucide-react'
+import React from "react";
+import { motion } from "framer-motion";
+import { Mail, Phone, MapPin, Github, Twitter, Linkedin } from "lucide-react";
 
 export default function Footer() {
   const socialLinks = [
     { icon: Github, href: "#", label: "GitHub" },
     { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" }
-  ]
+    { icon: Linkedin, href: "#", label: "LinkedIn" },
+  ];
 
   const footerLinks = [
     {
       title: "Product",
-      links: ["Features", "Pricing", "API", "Documentation"]
+      links: ["Features", "Pricing", "API", "Documentation"],
     },
     {
       title: "Company",
-      links: ["About Us", "Careers", "Blog", "Press"]
+      links: ["About Us", "Careers", "Blog", "Press"],
     },
     {
       title: "Support",
-      links: ["Help Center", "Contact", "Privacy Policy", "Terms of Service"]
-    }
-  ]
+      links: ["Help Center", "Contact", "Privacy Policy", "Terms of Service"],
+    },
+  ];
 
   return (
     <footer className="bg-black border-t border-green-500/20 py-16">
@@ -41,10 +41,10 @@ export default function Footer() {
               <span className="text-green-400">MET</span>
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Revolutionizing interview preparation with AI-powered technology. 
+              Revolutionizing interview preparation with AI-powered technology.
               Your success is our mission.
             </p>
-            
+
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center text-gray-300">
@@ -53,7 +53,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center text-gray-300">
                 <Phone size={16} className="mr-3 text-green-400" />
-                <span>+919860655706</span>
+                <span>+919850655706</span>
               </div>
               <div className="flex items-center text-gray-300">
                 <MapPin size={16} className="mr-3 text-green-400" />
@@ -100,17 +100,17 @@ export default function Footer() {
           <p className="text-gray-400 mb-4 md:mb-0">
             © 2024 AUXMET. All rights reserved.
           </p>
-          
+
           {/* Social Links */}
           <div className="flex space-x-4">
             {socialLinks.map((social) => (
               <motion.a
                 key={social.label}
                 href={social.href}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.2,
                   color: "#22ff44",
-                  boxShadow: "0 0 15px rgba(34, 255, 68, 0.5)"
+                  boxShadow: "0 0 15px rgba(34, 255, 68, 0.5)",
                 }}
                 whileTap={{ scale: 0.9 }}
                 className="text-gray-400 hover:text-green-400 transition-all duration-200 p-2 rounded-full border border-green-500/20 hover:border-green-400/50"
@@ -123,5 +123,5 @@ export default function Footer() {
         </motion.div>
       </div>
     </footer>
-  )
+  );
 }
