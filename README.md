@@ -286,6 +286,7 @@ The platform follows a microservices architecture with specialized components:
 | **Pinecone** | 7.3.0 | Vector database for embeddings |
 | **HuggingFace** | 0.3.0 | Transformer models |
 | **Socket.IO** | 5.13.0 | Real-time communication |
+| **Redis** | 6.2.0+ | Session caching and message queuing |
 
 ---
 
