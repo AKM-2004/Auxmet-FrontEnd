@@ -151,12 +151,16 @@ graph TB
         B[Three.js 3D UI]
         C[Socket.IO Client]
         D[Voice UI Components]
+        E1[Results Dashboard]
+        F1[Reference Materials UI]
     end
     
     subgraph "Backend Services"
         E[Express.js API Server]
         F[FastAPI AI Service]
         G[Socket.IO Server]
+        H1[Results Processing Service]
+        I1[Reference Generator Service]
     end
     
     subgraph "AI/ML Layer"
@@ -165,18 +169,24 @@ graph TB
         J[Kokoro TTS]
         K[Question Agent]
         L[Summary Agent]
+        M1[Answer Evaluation Agent]
+        N1[Link Generation Agent]
     end
     
     subgraph "Data Layer"
         M[MongoDB Atlas]
         N[Redis Cache]
         O[Cloudinary CDN]
+        P1[Results Collection]
+        Q1[Reference Links Collection]
     end
     
     subgraph "External Services"
         P[Google OAuth]
         Q[Pinecone Vector DB]
         R[HuggingFace Models]
+        S1[DuckDuckGo Search API]
+        T1[Learning Resources APIs]
     end
     
     A --> E
@@ -193,18 +203,49 @@ graph TB
     E --> P
     E --> O
     
+    %% Results & Reference Materials Flow
+    F --> M1
+    M1 --> H1
+    H1 --> P1
+    M1 --> N1
+    N1 --> I1
+    I1 --> Q1
+    N1 --> S1
+    N1 --> T1
+    E1 --> H1
+    F1 --> I1
+    
     style A fill:#00ff88,stroke:#000,color:#000
     style F fill:#00ff88,stroke:#000,color:#000
     style E fill:#00ff88,stroke:#000,color:#000
+    style H1 fill:#22ff44,stroke:#000,color:#000
+    style I1 fill:#22ff44,stroke:#000,color:#000
+    style M1 fill:#44ff66,stroke:#000,color:#000
+    style N1 fill:#44ff66,stroke:#000,color:#000
 ```
 
 ### 🔄 **Microservices Architecture**
 
-The platform follows a microservices architecture with three main components:
+The platform follows a microservices architecture with specialized components:
 
-1. **Frontend Service** (`auxmet-frontend`) - React-based user interface
-2. **Backend Service** (`auxmet-backend`) - Express.js API server
-3. **AI Bot Service** (`auxmet-bot`) - FastAPI-based AI processing engine
+#### **Core Services**
+1. **Frontend Service** (`auxmet-frontend`) - React-based user interface with results dashboard and reference materials UI
+2. **Backend Service** (`auxmet-backend`) - Express.js API server handling authentication and session management
+3. **AI Bot Service** (`auxmet-bot`) - FastAPI-based AI processing engine with intelligent agents
+
+#### **Specialized Processing Services**
+4. **Results Processing Service** - Real-time performance analysis and scoring computation
+5. **Reference Generator Service** - AI-powered learning resource generation for incorrect answers
+
+#### **AI/ML Agents**
+- **Answer Evaluation Agent** - Analyzes response correctness and generates performance scores
+- **Link Generation Agent** - Creates personalized learning resources using DuckDuckGo Search and educational APIs
+- **Question Agent** - Generates contextual interview questions based on resume data
+- **Summary Agent** - Creates comprehensive session summaries every 10 questions
+
+#### **Data Management**
+- **Results Collection** - Stores multi-dimensional performance metrics and analytics
+- **Reference Links Collection** - Manages AI-generated learning resources and explanations
 
 ---
 
