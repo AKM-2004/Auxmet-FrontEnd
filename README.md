@@ -280,6 +280,7 @@ The platform follows a microservices architecture with specialized components:
 | **Python** | 3.11+ | AI service runtime |
 | **FastAPI** | 0.116.1 | High-performance API framework |
 | **LangChain** | 0.3.26 | LLM application framework |
+| **LangGraph** | 0.6.4 | AI workflow orchestration |
 | **Groq** | 0.30.0 | High-speed LLM inference |
 | **Faster Whisper** | 1.2.0 | Speech-to-text processing |
 | **Kokoro TTS** | 0.9.4 | Text-to-speech synthesis |
