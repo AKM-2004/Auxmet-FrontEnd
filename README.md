@@ -13,7 +13,7 @@
 
 **A cutting-edge AI interview platform that revolutionizes technical recruitment through real-time voice interactions, intelligent questioning, and comprehensive performance analytics.**
 
-[🚀 Live Demo](https://auxmet.com) • [📖 Documentation](#documentation) • [🛠️ Installation](#installation) • [🏗️ Architecture](#architecture)
+[🚀 Live Demo](https://auxmet.com) • [📖 Documentation](#-api-documentation) • [🛠️ Installation](#-installation--setup) • [🏗️ Architecture](#️-system-architecture)
 
 </div>
 
@@ -21,26 +21,64 @@
 
 ## 📋 Table of Contents
 
-- [🌟 Overview](#overview)
-- [✨ Key Features](#key-features)
-- [🏗️ System Architecture](#system-architecture)
-- [🛠️ Technology Stack](#technology-stack)
-- [📁 Project Structure](#project-structure)
-- [🚀 Installation & Setup](#installation--setup)
-- [🔧 Configuration](#configuration)
-- [📊 API Documentation](#api-documentation)
-- [🎯 Usage Guide](#usage-guide)
-- [🔄 Data Flow](#data-flow)
-- [🧪 Testing](#testing)
-- [🚀 Deployment](#deployment)
-- [🤝 Contributing](#contributing)
-- [📄 License](#license)
+- [🌟 Overview](#-overview)
+- [✨ Key Features](#-key-features)
+- [🏗️ System Architecture](#️-system-architecture)
+- [🛠️ Technology Stack](#️-technology-stack)
+- [📁 Project Structure](#-project-structure)
+- [🚀 Installation & Setup](#-installation--setup)
+- [🔧 Configuration](#-configuration)
+- [📊 API Documentation](#-api-documentation)
+- [🎯 Usage Guide](#-usage-guide)
+- [🔄 Data Flow](#-data-flow)
+- [🧪 Testing](#-testing)
+- [🚀 Deployment](#-deployment)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
 
 ---
 
 ## 🌟 Overview
 
 AUXMET is an enterprise-grade AI interview platform that transforms traditional recruitment processes through advanced artificial intelligence. The platform conducts real-time voice-based technical interviews, analyzes candidate responses, and provides comprehensive performance insights to recruiters.
+
+## 📸 Application Screenshots
+
+### 🏠 **Landing Page**
+![AUXMET Landing Page](./images/Screenshot%202025-09-08%20223915.png)
+*Modern landing page with futuristic design and clear call-to-action*
+
+### 🚪 **Login Interface**
+![Login Page](./images/Screenshot%202025-09-08%20223934.png)
+*Secure authentication with Google OAuth integration*
+
+### 🎯 **Dashboard**
+![Dashboard](./images/Screenshot%202025-09-08%20223646.png)
+*Clean dashboard interface with AI-powered interview initiation*
+
+### 📋 **Interview Setup**
+![Interview Preparation](./images/Screenshot%202025-09-08%20223717.png)
+*Comprehensive interview preparation portal with resume upload and session configuration*
+
+### 📊 **Performance Analytics**
+![Performance Results](./images/Screenshot%202025-09-08%20223757.png)
+*Multi-dimensional scoring system with detailed performance metrics*
+
+### 📈 **Domain Analysis**
+![Domain Performance](./images/Screenshot%202025-09-08%20223817.png)
+*Domain-specific performance tracking and analytics*
+
+### 📚 **Reference Materials**
+![Learning Resources](./images/Screenshot%202025-09-08%20223837.png)
+*AI-generated reference links and learning materials for improvement*
+
+### 📋 **Interview History**
+![Interview History](./images/Screenshot%202025-09-08%20223736.png)
+*Complete history of practice sessions with performance tracking*
+
+### 👤 **User Profile**
+![User Profile](./images/Screenshot%202025-09-08%20223858.png)
+*Comprehensive user profile management with statistics*
 
 ### 🎯 Problem Statement
 
@@ -382,36 +420,93 @@ python src/main.py
 
 ## 📊 API Documentation
 
-### **Authentication Endpoints**
+### 📊 **API Documentation**
+
+#### **Authentication Endpoints**
 ```http
 POST /api/v1/user/register
 POST /api/v1/user/login
 POST /api/v1/user/logout
 GET  /api/v1/user/refresh-token
+GET  /api/v1/user/profile
+PUT  /api/v1/user/profile
 ```
 
-### **Interview Endpoints**
+#### **Interview Session Endpoints**
 ```http
 POST /api/v1/interview/create-session
 GET  /api/v1/interview/sessions
 GET  /api/v1/interview/session/:id
 DELETE /api/v1/interview/session/:id
+PUT  /api/v1/interview/session/:id/end
 ```
 
-### **WebSocket Events**
+#### **Results & Analytics Endpoints**
+```http
+GET  /api/v1/interview/results/:sessionId
+GET  /api/v1/interview/results/:sessionId/detailed
+GET  /api/v1/interview/results/:sessionId/domain-analysis
+POST /api/v1/interview/results/:sessionId/generate-report
+```
+
+#### **Reference Materials Endpoints**
+```http
+GET  /api/v1/interview/reference-links/:sessionId
+POST /api/v1/interview/generate-links
+GET  /api/v1/interview/learning-resources/:questionId
+```
+
+#### **WebSocket Events**
 ```javascript
-// Client to Server
+// Client to Server Events
 socket.emit('input_audio', {
   audio_buffer: Float32Array,
   isFinal: boolean
 });
 
-// Server to Client
-socket.on('output_audio', {
+socket.emit('session_start', {
+  sessionId: string,
+  userId: string
+});
+
+socket.emit('session_end', {
+  sessionId: string
+});
+
+// Server to Client Events
+socket.on('output_parser', {
   sr: number,
   audio_array: ArrayBuffer,
   text: string,
   length: number
+});
+
+socket.on('question_analysis', {
+  questionId: string,
+  correctness: boolean,
+  score: number,
+  explanation: string
+});
+
+socket.on('reference_links', {
+  questionId: string,
+  links: Array<{
+    title: string,
+    url: string,
+    description: string
+  }>
+});
+
+socket.on('session_summary', {
+  sessionId: string,
+  totalQuestions: number,
+  correctAnswers: number,
+  scores: {
+    technical: number,
+    communication: number,
+    problemSolving: number,
+    depthOfKnowledge: number
+  }
 });
 ```
 
