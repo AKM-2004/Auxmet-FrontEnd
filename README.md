@@ -44,19 +44,21 @@ AUXMET is an enterprise-grade AI interview platform that transforms traditional 
 
 ### 🎯 Problem Statement
 
-Traditional technical interviews are:
-- **Time-consuming** for both recruiters and candidates
-- **Inconsistent** in evaluation criteria
-- **Limited** by interviewer availability and expertise
-- **Subjective** in assessment methodology
+Students and job seekers face significant challenges when preparing for technical interviews:
+- **Lack of Practice Opportunities** - Limited access to realistic interview simulations
+- **No Immediate Feedback** - Unable to identify weaknesses and improvement areas
+- **Interview Anxiety** - Nervousness due to unfamiliarity with interview processes
+- **Inconsistent Preparation** - No standardized way to practice across different domains
+- **Time Constraints** - Difficulty finding mentors or peers for mock interviews
 
 ### 💡 Solution
 
-AUXMET addresses these challenges by providing:
-- **24/7 Availability** - Conduct interviews anytime, anywhere
-- **Standardized Evaluation** - Consistent, bias-free assessment criteria
-- **Real-time Analysis** - Instant feedback and performance metrics
-- **Scalable Solution** - Handle multiple interviews simultaneously
+AUXMET addresses these challenges by providing students with:
+- **Unlimited Practice Sessions** - Practice interviews anytime, anywhere without scheduling constraints
+- **Instant Performance Analysis** - Real-time feedback on technical skills, communication, and problem-solving
+- **Confidence Building** - Familiarize with interview formats to reduce anxiety
+- **Personalized Learning** - AI-driven questions based on resume and skill level
+- **Comprehensive Preparation** - Cover multiple domains and difficulty levels before real interviews
 
 ---
 
@@ -74,11 +76,19 @@ AUXMET addresses these challenges by providing:
 - Adaptive difficulty based on candidate responses
 - Domain-specific technical assessments
 
-### 📊 **Comprehensive Analytics**
-- Technical skill scoring and evaluation
-- Communication skills assessment
-- Problem-solving capability analysis
-- Detailed performance reports with improvement suggestions
+### 📊 **Comprehensive Analytics & Scoring**
+- **Multi-dimensional Scoring System** - Technical skills, communication, problem-solving, and depth of knowledge
+- **Domain-specific Evaluation** - Separate scores for different technical domains (Web Dev, ML, etc.)
+- **Real-time Performance Tracking** - Live scoring during interview sessions
+- **Detailed Performance Reports** - Comprehensive analysis with improvement suggestions
+- **Session Summary Generation** - AI-powered summary after every 10 questions for progress tracking
+
+### 📚 **Intelligent Feedback & Learning Resources**
+- **Instant Answer Analysis** - Real-time evaluation of responses with correctness indicators
+- **Reference Link Generation** - Automatic generation of learning resources for incorrect answers
+- **Personalized Study Materials** - Curated learning paths based on performance gaps
+- **Question-specific Explanations** - Detailed explanations for complex technical concepts
+- **Improvement Recommendations** - AI-driven suggestions for skill enhancement
 
 ### 🎨 **Modern User Experience**
 - Responsive React frontend with Three.js 3D animations
@@ -409,18 +419,21 @@ socket.on('output_audio', {
 
 ## 🎯 Usage Guide
 
-### **For Candidates**
+### **For Students & Job Seekers**
 1. **Registration** - Create account or login with Google
 2. **Profile Setup** - Upload resume and complete profile
-3. **Start Interview** - Begin AI-powered interview session
-4. **Voice Interaction** - Engage in real-time conversation
-5. **View Results** - Access detailed performance analysis
-
-### **For Recruiters**
-1. **Dashboard Access** - Monitor ongoing interviews
-2. **Candidate Management** - Review candidate profiles
-3. **Performance Analytics** - Analyze interview results
-4. **Report Generation** - Export detailed assessments
+3. **Start Practice Session** - Begin AI-powered interview simulation
+4. **Voice Interaction** - Engage in real-time conversation with AI interviewer
+5. **Real-time Feedback** - Receive instant analysis and correctness indicators
+6. **Session Completion** - Get comprehensive scoring across multiple dimensions:
+   - **Technical Skills Score** (0-10 scale)
+   - **Communication Skills Score** (0-10 scale) 
+   - **Problem Solving Score** (0-10 scale)
+   - **Depth of Knowledge Score** (0-10 scale)
+   - **Domain-specific Scores** (per technical area)
+7. **Review Materials** - Access generated reference links for incorrect answers
+8. **Performance Analysis** - Study detailed reports with improvement suggestions
+9. **Progress Tracking** - Monitor improvement over multiple practice sessions
 
 ---
 
@@ -428,26 +441,47 @@ socket.on('output_audio', {
 
 ```mermaid
 sequenceDiagram
-    participant U as User
+    participant U as Student
     participant F as Frontend
     participant B as Backend
     participant A as AI Bot
     participant D as Database
+    participant L as Link Generator
     
-    U->>F: Start Interview
+    U->>F: Start Practice Session
     F->>B: Create Session
-    B->>D: Store Session
+    B->>D: Store Session Data
     F->>A: Connect WebSocket
-    A->>A: Load AI Models
-    A->>F: Send First Question (Audio)
-    F->>U: Play Question
+    A->>A: Load AI Models (STT, TTS, LLM)
+    A->>D: Fetch Resume Data
+    A->>A: Generate First Question
+    A->>F: Send Question (Audio + Text)
+    F->>U: Play Question Audio
     U->>F: Speak Answer
-    F->>A: Send Audio Stream
-    A->>A: Process STT
-    A->>A: Generate Response
-    A->>F: Send Next Question
-    A->>D: Store Q&A Data
-    F->>U: Continue Interview
+    F->>A: Send Audio Stream (chunks)
+    A->>A: Process STT (Speech-to-Text)
+    A->>A: Analyze Answer Correctness
+    A->>A: Generate Scoring Metrics
+    A->>D: Store Q&A + Scores
+    
+    alt Answer is Incorrect
+        A->>L: Generate Reference Links
+        L->>A: Return Learning Resources
+        A->>F: Send Links + Explanation
+        F->>U: Display Review Materials
+    end
+    
+    A->>A: Generate Next Question
+    A->>F: Send Next Question (Audio)
+    
+    Note over A,D: Every 10 questions: Generate Summary
+    
+    alt Session End (Timer/Manual)
+        A->>A: Calculate Final Scores
+        A->>D: Store Complete Results
+        A->>F: Send Comprehensive Report
+        F->>U: Display Score Dashboard
+    end
 ```
 
 ---
@@ -526,9 +560,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👥 Team
 
 **Aditya More** - *Lead Developer & Architect*
-- 📧 Email: [your-email@example.com](mailto:your-email@example.com)
-- 💼 LinkedIn: [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)
-- 🐙 GitHub: [@yourusername](https://github.com/yourusername)
+- 📧 Email: [adityamore49891@gmail.com](mailto:adityamore49891@gmail.com)
+- 💼 LinkedIn: [Aditya More](https://www.linkedin.com/in/aditya-akm/)
+- 🐙 GitHub: [@AKM-2004](https://github.com/AKM-2004)
 
 ---
 
