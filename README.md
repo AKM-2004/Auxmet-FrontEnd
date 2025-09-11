@@ -1,0 +1,554 @@
+# 🎯 AUXMET - AI-Powered Interview Platform
+
+<div align="center">
+
+![AUXMET Logo](https://img.shields.io/badge/AUXMET-AI%20Interview%20Platform-00ff88?style=for-the-badge&logo=robot&logoColor=white)
+
+[![Node.js](https://img.shields.io/badge/Node.js-18.x-339933?style=flat-square&logo=node.js)](https://nodejs.org/)
+[![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=flat-square&logo=react)](https://reactjs.org/)
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=flat-square&logo=python)](https://python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.116.1-009688?style=flat-square&logo=fastapi)](https://fastapi.tiangolo.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-6.0+-47A248?style=flat-square&logo=mongodb)](https://mongodb.com/)
+[![Socket.IO](https://img.shields.io/badge/Socket.IO-4.8.1-010101?style=flat-square&logo=socket.io)](https://socket.io/)
+
+**A cutting-edge AI interview platform that revolutionizes technical recruitment through real-time voice interactions, intelligent questioning, and comprehensive performance analytics.**
+
+[🚀 Live Demo](https://auxmet.com) • [📖 Documentation](#documentation) • [🛠️ Installation](#installation) • [🏗️ Architecture](#architecture)
+
+</div>
+
+---
+
+## 📋 Table of Contents
+
+- [🌟 Overview](#overview)
+- [✨ Key Features](#key-features)
+- [🏗️ System Architecture](#system-architecture)
+- [🛠️ Technology Stack](#technology-stack)
+- [📁 Project Structure](#project-structure)
+- [🚀 Installation & Setup](#installation--setup)
+- [🔧 Configuration](#configuration)
+- [📊 API Documentation](#api-documentation)
+- [🎯 Usage Guide](#usage-guide)
+- [🔄 Data Flow](#data-flow)
+- [🧪 Testing](#testing)
+- [🚀 Deployment](#deployment)
+- [🤝 Contributing](#contributing)
+- [📄 License](#license)
+
+---
+
+## 🌟 Overview
+
+AUXMET is an enterprise-grade AI interview platform that transforms traditional recruitment processes through advanced artificial intelligence. The platform conducts real-time voice-based technical interviews, analyzes candidate responses, and provides comprehensive performance insights to recruiters.
+
+### 🎯 Problem Statement
+
+Traditional technical interviews are:
+- **Time-consuming** for both recruiters and candidates
+- **Inconsistent** in evaluation criteria
+- **Limited** by interviewer availability and expertise
+- **Subjective** in assessment methodology
+
+### 💡 Solution
+
+AUXMET addresses these challenges by providing:
+- **24/7 Availability** - Conduct interviews anytime, anywhere
+- **Standardized Evaluation** - Consistent, bias-free assessment criteria
+- **Real-time Analysis** - Instant feedback and performance metrics
+- **Scalable Solution** - Handle multiple interviews simultaneously
+
+---
+
+## ✨ Key Features
+
+### 🎤 **Real-time Voice Interaction**
+- Advanced Speech-to-Text (STT) using Faster Whisper
+- Natural Text-to-Speech (TTS) with Kokoro TTS
+- Voice Activity Detection (VAD) for seamless conversation flow
+- WebSocket-based real-time audio streaming
+
+### 🧠 **Intelligent Question Generation**
+- AI-powered question generation using Groq LLM (Llama models)
+- Resume-based personalized questioning
+- Adaptive difficulty based on candidate responses
+- Domain-specific technical assessments
+
+### 📊 **Comprehensive Analytics**
+- Technical skill scoring and evaluation
+- Communication skills assessment
+- Problem-solving capability analysis
+- Detailed performance reports with improvement suggestions
+
+### 🎨 **Modern User Experience**
+- Responsive React frontend with Three.js 3D animations
+- Green/Black futuristic theme design
+- Real-time interview session management
+- Interactive dashboard with performance metrics
+
+### 🔐 **Enterprise Security**
+- JWT-based authentication system
+- Google OAuth integration
+- Secure session management
+- Data encryption and privacy protection
+
+---
+
+## 🏗️ System Architecture
+
+```mermaid
+graph TB
+    subgraph "Frontend Layer"
+        A[React Application]
+        B[Three.js 3D UI]
+        C[Socket.IO Client]
+        D[Voice UI Components]
+    end
+    
+    subgraph "Backend Services"
+        E[Express.js API Server]
+        F[FastAPI AI Service]
+        G[Socket.IO Server]
+    end
+    
+    subgraph "AI/ML Layer"
+        H[Groq LLM]
+        I[Faster Whisper STT]
+        J[Kokoro TTS]
+        K[Question Agent]
+        L[Summary Agent]
+    end
+    
+    subgraph "Data Layer"
+        M[MongoDB Atlas]
+        N[Redis Cache]
+        O[Cloudinary CDN]
+    end
+    
+    subgraph "External Services"
+        P[Google OAuth]
+        Q[Pinecone Vector DB]
+        R[HuggingFace Models]
+    end
+    
+    A --> E
+    A --> G
+    C --> G
+    E --> M
+    F --> H
+    F --> I
+    F --> J
+    G --> F
+    K --> H
+    L --> H
+    F --> Q
+    E --> P
+    E --> O
+    
+    style A fill:#00ff88,stroke:#000,color:#000
+    style F fill:#00ff88,stroke:#000,color:#000
+    style E fill:#00ff88,stroke:#000,color:#000
+```
+
+### 🔄 **Microservices Architecture**
+
+The platform follows a microservices architecture with three main components:
+
+1. **Frontend Service** (`auxmet-frontend`) - React-based user interface
+2. **Backend Service** (`auxmet-backend`) - Express.js API server
+3. **AI Bot Service** (`auxmet-bot`) - FastAPI-based AI processing engine
+
+---
+
+## 🛠️ Technology Stack
+
+### **Frontend Technologies**
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **React** | 18.3.1 | Core UI framework |
+| **Three.js** | 0.159.0 | 3D graphics and animations |
+| **Framer Motion** | 10.18.0 | Advanced animations |
+| **Socket.IO Client** | 4.8.1 | Real-time communication |
+| **Tailwind CSS** | 3.4.17 | Utility-first styling |
+| **Vite** | 5.4.19 | Build tool and dev server |
+| **Lucide React** | 0.294.0 | Modern icon library |
+
+### **Backend Technologies**
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **Node.js** | 18.x | Runtime environment |
+| **Express.js** | 5.1.0 | Web application framework |
+| **MongoDB** | 8.13.2 | Primary database |
+| **Mongoose** | 8.13.2 | MongoDB object modeling |
+| **JWT** | 9.0.2 | Authentication tokens |
+| **Passport.js** | 0.7.0 | Authentication middleware |
+| **Cloudinary** | 2.6.1 | Media management |
+| **bcrypt** | 6.0.0 | Password hashing |
+
+### **AI/ML Technologies**
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **Python** | 3.11+ | AI service runtime |
+| **FastAPI** | 0.116.1 | High-performance API framework |
+| **LangChain** | 0.3.26 | LLM application framework |
+| **Groq** | 0.30.0 | High-speed LLM inference |
+| **Faster Whisper** | 1.2.0 | Speech-to-text processing |
+| **Kokoro TTS** | 0.9.4 | Text-to-speech synthesis |
+| **Pinecone** | 7.3.0 | Vector database for embeddings |
+| **HuggingFace** | 0.3.0 | Transformer models |
+| **Socket.IO** | 5.13.0 | Real-time communication |
+
+---
+
+## 📁 Project Structure
+
+```
+AUXMET/
+├── 📁 auxmet-frontend/          # React Frontend Application
+│   ├── 📁 src/
+│   │   ├── 📁 components/       # Reusable UI components
+│   │   │   ├── Header.jsx
+│   │   │   ├── HeroSection.jsx
+│   │   │   ├── ThreeBackground.jsx
+│   │   │   └── NewVoiceUI.jsx
+│   │   ├── 📁 pages/           # Application pages
+│   │   │   ├── PreLoginPage.jsx
+│   │   │   ├── LoginPage.jsx
+│   │   │   ├── InterviewSessionPage.jsx
+│   │   │   └── ResultDashboard.jsx
+│   │   ├── 📁 store/           # State management
+│   │   └── App.jsx
+│   ├── package.json
+│   └── vite.config.js
+│
+├── 📁 auxmet-backend/           # Express.js API Server
+│   ├── 📁 src/
+│   │   ├── 📁 controllers/     # Request handlers
+│   │   │   ├── user.controller.js
+│   │   │   └── interview.controller.js
+│   │   ├── 📁 models/          # Database schemas
+│   │   │   ├── users.model.js
+│   │   │   ├── interview_session.model.js
+│   │   │   ├── results.model.js
+│   │   │   └── resume.model.js
+│   │   ├── 📁 routes/          # API routes
+│   │   ├── 📁 middlewares/     # Custom middleware
+│   │   ├── 📁 utils/           # Utility functions
+│   │   ├── app.js              # Express app configuration
+│   │   └── index.js            # Server entry point
+│   └── package.json
+│
+└── 📁 auxmet-bot/              # FastAPI AI Service
+    ├── 📁 src/
+    │   ├── 📁 models/          # AI model implementations
+    │   │   ├── question_agent.py
+    │   │   ├── summary_agent.py
+    │   │   ├── audioText.py    # STT implementation
+    │   │   └── textSpeech.py   # TTS implementation
+    │   ├── 📁 controllers/     # Business logic
+    │   │   └── chat_controller.py
+    │   ├── 📁 router/          # API routes
+    │   │   ├── interview_router.py
+    │   │   └── conversation_socket.py
+    │   ├── 📁 db/              # Database connections
+    │   ├── 📁 prompts/         # LLM prompts
+    │   ├── 📁 utils/           # Utility functions
+    │   ├── app.py              # FastAPI app
+    │   └── main.py             # Service entry point
+    ├── requirements.txt
+    └── pyproject.toml
+```
+
+---
+
+## 🚀 Installation & Setup
+
+### **Prerequisites**
+- **Node.js** 18.x or higher
+- **Python** 3.11 or higher
+- **MongoDB** Atlas account or local installation
+- **Redis** server (optional, for caching)
+
+### **1. Clone the Repository**
+```bash
+git clone https://github.com/yourusername/auxmet.git
+cd auxmet
+```
+
+### **2. Frontend Setup**
+```bash
+cd auxmet-frontend
+npm install
+```
+
+Create `.env` file:
+```env
+VITE_BACKEND_URL=http://localhost:7575
+VITE_BOTBACKENDURL=http://localhost:7576
+```
+
+### **3. Backend Setup**
+```bash
+cd auxmet-backend
+npm install
+```
+
+Create `.env` file:
+```env
+PORT=7575
+MONGODB_URI=your_mongodb_connection_string
+ACCESS_TOKEN_SECRET=your_jwt_secret
+REFRESH_TOKEN_SECRET=your_refresh_secret
+CLOUDINARY_CLOUD_NAME=your_cloudinary_name
+CLOUDINARY_API_KEY=your_cloudinary_key
+CLOUDINARY_API_SECRET=your_cloudinary_secret
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+```
+
+### **4. AI Bot Setup**
+```bash
+cd auxmet-bot
+pip install -r requirements.txt
+```
+
+Create `.env` file:
+```env
+GROQ_API=your_groq_api_key
+HUGGINGFACE_API=your_huggingface_token
+LLM_MODEL=llama-3.1-70b-versatile
+MONGODB_URI=your_mongodb_connection_string
+PINECONE_API_KEY=your_pinecone_key
+PINECONE_ENVIRONMENT=your_pinecone_env
+SESSION_TOKEN=your_session_secret
+ALGORITHMS=HS256
+BOTAPP_ORIGINS=http://localhost:3000,https://auxmet.com
+```
+
+### **5. Start Services**
+
+**Terminal 1 - Frontend:**
+```bash
+cd auxmet-frontend
+npm run dev
+```
+
+**Terminal 2 - Backend:**
+```bash
+cd auxmet-backend
+npm run dev
+```
+
+**Terminal 3 - AI Bot:**
+```bash
+cd auxmet-bot
+python src/main.py
+```
+
+---
+
+## 🔧 Configuration
+
+### **Environment Variables**
+
+#### Frontend Configuration
+- `VITE_BACKEND_URL` - Backend API endpoint
+- `VITE_BOTBACKENDURL` - AI bot service endpoint
+
+#### Backend Configuration
+- `MONGODB_URI` - MongoDB connection string
+- `ACCESS_TOKEN_SECRET` - JWT access token secret
+- `REFRESH_TOKEN_SECRET` - JWT refresh token secret
+- `CLOUDINARY_*` - Cloudinary configuration for file uploads
+- `GOOGLE_CLIENT_*` - Google OAuth credentials
+
+#### AI Bot Configuration
+- `GROQ_API` - Groq API key for LLM access
+- `HUGGINGFACE_API` - HuggingFace token for model access
+- `PINECONE_API_KEY` - Pinecone vector database key
+- `LLM_MODEL` - Groq model identifier
+
+---
+
+## 📊 API Documentation
+
+### **Authentication Endpoints**
+```http
+POST /api/v1/user/register
+POST /api/v1/user/login
+POST /api/v1/user/logout
+GET  /api/v1/user/refresh-token
+```
+
+### **Interview Endpoints**
+```http
+POST /api/v1/interview/create-session
+GET  /api/v1/interview/sessions
+GET  /api/v1/interview/session/:id
+DELETE /api/v1/interview/session/:id
+```
+
+### **WebSocket Events**
+```javascript
+// Client to Server
+socket.emit('input_audio', {
+  audio_buffer: Float32Array,
+  isFinal: boolean
+});
+
+// Server to Client
+socket.on('output_audio', {
+  sr: number,
+  audio_array: ArrayBuffer,
+  text: string,
+  length: number
+});
+```
+
+---
+
+## 🎯 Usage Guide
+
+### **For Candidates**
+1. **Registration** - Create account or login with Google
+2. **Profile Setup** - Upload resume and complete profile
+3. **Start Interview** - Begin AI-powered interview session
+4. **Voice Interaction** - Engage in real-time conversation
+5. **View Results** - Access detailed performance analysis
+
+### **For Recruiters**
+1. **Dashboard Access** - Monitor ongoing interviews
+2. **Candidate Management** - Review candidate profiles
+3. **Performance Analytics** - Analyze interview results
+4. **Report Generation** - Export detailed assessments
+
+---
+
+## 🔄 Data Flow
+
+```mermaid
+sequenceDiagram
+    participant U as User
+    participant F as Frontend
+    participant B as Backend
+    participant A as AI Bot
+    participant D as Database
+    
+    U->>F: Start Interview
+    F->>B: Create Session
+    B->>D: Store Session
+    F->>A: Connect WebSocket
+    A->>A: Load AI Models
+    A->>F: Send First Question (Audio)
+    F->>U: Play Question
+    U->>F: Speak Answer
+    F->>A: Send Audio Stream
+    A->>A: Process STT
+    A->>A: Generate Response
+    A->>F: Send Next Question
+    A->>D: Store Q&A Data
+    F->>U: Continue Interview
+```
+
+---
+
+## 🧪 Testing
+
+### **Frontend Testing**
+```bash
+cd auxmet-frontend
+npm test
+```
+
+### **Backend Testing**
+```bash
+cd auxmet-backend
+npm test
+```
+
+### **AI Bot Testing**
+```bash
+cd auxmet-bot
+python -m pytest tests/
+```
+
+---
+
+## 🚀 Deployment
+
+### **Production Deployment**
+
+#### **Frontend (Netlify/Vercel)**
+```bash
+npm run build
+# Deploy dist/ folder
+```
+
+#### **Backend (Railway/Heroku)**
+```bash
+# Configure environment variables
+# Deploy with Docker or direct deployment
+```
+
+#### **AI Bot (Railway/AWS)**
+```bash
+# Configure Python environment
+# Deploy with Docker container
+```
+
+### **Docker Deployment**
+```bash
+# Build and run with Docker Compose
+docker-compose up -d
+```
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+### **Development Workflow**
+1. Fork the repository
+2. Create feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 👥 Team
+
+**Aditya More** - *Lead Developer & Architect*
+- 📧 Email: [your-email@example.com](mailto:your-email@example.com)
+- 💼 LinkedIn: [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)
+- 🐙 GitHub: [@yourusername](https://github.com/yourusername)
+
+---
+
+## 🙏 Acknowledgments
+
+- **Groq** for high-speed LLM inference
+- **HuggingFace** for transformer models
+- **OpenAI** for inspiration and AI research
+- **React Three Fiber** community for 3D web development
+- **FastAPI** team for the excellent framework
+
+---
+
+<div align="center">
+
+**⭐ Star this repository if you find it helpful!**
+
+[![GitHub stars](https://img.shields.io/github/stars/yourusername/auxmet?style=social)](https://github.com/yourusername/auxmet/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/yourusername/auxmet?style=social)](https://github.com/yourusername/auxmet/network)
+
+**Made with ❤️ and ☕ by the AUXMET Team**
+
+</div>
