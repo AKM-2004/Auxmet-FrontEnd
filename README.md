@@ -60,6 +60,9 @@ AUXMET is an enterprise-grade AI interview platform that transforms traditional 
 ![Interview Preparation](https://res.cloudinary.com/doe5oa9aw/image/upload/v1757928692/Screenshot_2025-09-08_223717_wbr5y6.png)
 *Comprehensive interview preparation portal with resume upload and session configuration*
 
+### 📋 **Interview page**
+![Interview Page](https://res.cloudinary.com/doe5oa9aw/image/upload/v1758390021/Screenshot_2025-09-20_230845_xzo7bj.png)
+
 ### 📊 **Performance Analytics**
 ![Performance Results](https://res.cloudinary.com/doe5oa9aw/image/upload/v1757928690/Screenshot_2025-09-08_223757_wpmyso.png)
 *Multi-dimensional scoring system with detailed performance metrics*
