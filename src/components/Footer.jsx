@@ -4,9 +4,9 @@ import { Mail, Phone, MapPin, Github, Twitter, Linkedin } from "lucide-react";
 
 export default function Footer() {
   const socialLinks = [
-    { icon: Github, href: "#", label: "GitHub" },
+    { icon: Github, href: "https://github.com/AKM-2004", label: "GitHub" },
     { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { icon: Linkedin, href: "https://www.linkedin.com/in/aditya-akm/", label: "LinkedIn" },
   ];
 
   const footerLinks = [
